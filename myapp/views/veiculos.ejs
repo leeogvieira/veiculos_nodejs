@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <link rel="shortcut icon" href="">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#veiculos').DataTable({
+                    language: { url: "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"}
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="table-wrapper">
+
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-12"> &nbsp; </div>
+                        <div class="col-sm-8">
+                            <h2>Veículos</h2>
+                            <p>Veículos cadastrados</p>   
+                        </div>
+                        <div class="col-sm-4">
+                            <a class="btn btn-primary btn-block" href="/insert" role="button">
+                                <i class="fa fa-plus fa-fw"></i> Novo Veículo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <table id="veiculos" class="table table-bordered" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Placa</th> 
+                        <th>Chassi</th>        
+                        <th>Renavam</th>
+                        <th>Marca</th>
+                        <th>Modelo</th> 
+                        <th>Ano</th>
+                        <th class="text-center">Ações</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                        <% veiculos.forEach(function(veiculo) { %>
+                            <tr>
+                                <td><%= veiculo.id %></td>
+                                <td><%= veiculo.placa %></td>
+                                <td><%= veiculo.chassi %></td>
+                                <td><%= veiculo.renavam %></td>
+                                <td><%= veiculo.marca %></td>
+                                <td><%= veiculo.modelo %></td>
+                                <td><%= veiculo.ano %></td>
+                                <td class="text-center">
+                                    <!-- <a class="btn btn-success btn-sm" href="/edit/<%= veiculo.id %>"> -->
+                                    <a class="btn btn-success btn-sm" href="/edit?id=<%= veiculo.id %>">
+                                        Editar
+                                    </a>
+                                    <!-- <a class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja remover a placa: <%= veiculo.placa %> ?')" href="/delete/<%= veiculo.id %>">      -->                               
+                                    <a class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja remover a placa: <%= veiculo.placa %> ?')" href="/delete?id=<%= veiculo.id %>">
+                                        Remover
+                                    </a>                   
+                                </td>
+                            </tr>
+                        <% }); %>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </body>
+</html>

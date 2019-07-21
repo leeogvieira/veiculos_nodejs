@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Formulario de Cadastro</title>
+        <link rel="shortcut icon" href="">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <style type="text/css">
+            .required:after {
+                content:" *"; 
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+
+          <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+
+                <h2>Cadastro de Veículo</h2>
+                <form method="POST" autocomplete="off">
+
+                    <input type="hidden" value="<%= veiculo.id %>">
+
+                    <div class="form-group">
+                        <label class="required">Placa:</label>
+                        <input type="placa" class="form-control" id="placa" placeholder="000-AAAA" name="placa" maxlength="8" style="text-transform:uppercase" value="<%= veiculo.placa %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Chassi:</label>
+                        <input type="text" class="form-control" id="chassi" placeholder="9AAAAA999AA999999" name="chassi" maxlength="17" style="text-transform:uppercase" value="<%= veiculo.chassi %>" required>
+                    </div>                
+                    <div class="form-group">
+                        <label class="required">Renavam:</label>
+                        <input type="text" class="form-control" id="renavam" placeholder="99999999999" pattern="[0-9]+" name="renavam" maxlength="11" value="<%= veiculo.renavam %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Marca:</label>
+                        <input type="text" class="form-control" id="marca" placeholder="FIAT" pattern="[a-zA-Z\s]+$" name="marca" style="text-transform:uppercase" value="<%= veiculo.marca %>" required>
+                    </div>                
+                    <div class="form-group">
+                        <label class="required">Modelo:</label>
+                        <input type="text" class="form-control" id="modelo" placeholder="Palio" pattern="[a-zA-Z\s]+$" name="modelo" value="<%= veiculo.modelo %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Ano:</label>
+                        <input type="text" class="form-control" id="ano" placeholder="2019" pattern="[0-9]+" name="ano" maxlength="4" value="<%= veiculo.ano %>" required>
+                    </div><br>
+
+                    <button type="submit" class="col-sm-5 btn btn-default">
+                        Cadastrar
+                    </button>
+                    <a class="col-sm-5 btn btn-primary pull-right" href="/veiculos" role="button">
+                        Voltar
+                    </a>
+
+                </form>
+
+            </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,4 @@
+--require test/helpers.js
+--reporter spec
+--copilers js:badel-core/register
+--slow 5000
